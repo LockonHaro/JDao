@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <script src="js/jquery.js"></script>
+        <script src="js/JDao2.js"></script>
+        <style>
+            .com { color: #93a1a1; }
+.lit { color: #195f91; }
+.pun, .opn, .clo { color: #93a1a1; }
+.fun { color: #dc322f; }
+.str, .atv { color: #D14; }
+.kwd, .linenums .tag { color: #1e347b; }
+.typ, .atn, .dec, .var { color: teal; }
+.pln { color: #48484c; }
+
+.prettyprint {
+  padding: 8px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
+.prettyprint.linenums {
+  -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+     -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+          box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin: 0 0 0 33px; /* IE indents via margin-left */
+} 
+ol.linenums li {
+  padding-left: 12px;
+  color: #bebec5;
+  line-height: 18px;
+  text-shadow: 0 1px 0 #fff;
+}
+        </style>
+    </head>
+    <body>
+        <div id="global" style="margin: auto;width:990px; ">
+            <div id="contenido">
+
+                <h1>JDao.js</h1>
+                <p>Pequeña libreria Javascript que incorpora algunos elementos del bootstrap de twitter de una manera mas facil de usuar junto a la libreria Jquery</p>
+                <p>Version de la libreria : V 2.0</p>
+                <p>Elementos Incorporados:</p>
+                 <ul>
+                      <li>Alertas Personalizadas</li>
+                      <li>Ajax Simplificado</li>
+                  </ul>
+
+                <br>
+
+                <h2>Como utilizarla</h2>
+                <p>para poder utilizar la libreria JDao tienes que incluirla a tus archivos html,php,aspx,etc junto con la libreria jquery para que pueda funcionar</p>
+                <p>Ejemplo:</p>
+
+                 <b>Archivo.html</b><br>
+                <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="tag">&lt;!DOCTYPE html</span><span class="pln"><span class="tag">&gt;</span><li class="L1"><span class="tag">&lt;html</span><span class="pln"> </span><span class="atn">lang</span><span class="pun">=</span><span class="atv">"es"</span><span class="tag">&gt;</span><li class="L4"><span class="tag">&lt;head&gt;</span></li><li class="L4"><span class="tag">&lt;link </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"css/bootstrap.css"</span> <span class="atn">rel</span><span class="pun">=</span><span class="atv">"stylesheet"</span><span>/&gt;</span></li><li class="L4"><span class="tag">&lt;script</span> <span class="atn">src</span><span class="pun">=</span><span class="atv">"js/jquery.js"</span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></li><li class="L4"><span class="tag">&lt;script</span> <span class="atn">src</span><span class="pun">=</span><span class="atv">"js/JDao.js"</span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></li><li class="L4"><span class="tag">&lt;/head&gt;</span></li><li class="L4"><span class="tag">&lt;body&gt;</span></li><li class="L4"><span class="pln">aqui todo el contenido que desees dentro de la pagina</span></li><li class="L4"><span class="tag">&lt;/body&gt;</span></li><li class="L4"><span class="tag">&lt;/html&gt;</span></li></ol></pre>
+     <br>
+    <h2>Alertas</h2>
+    <p>JDao trae un conjunto de alerta personalizadas para que las pueas utilizar en tus proyectos</p>
+    <h3>ALERTA DE ERROR</h3>
+     <p>alerta de tipo error para mostar cuando alla ocurrido un error
+         <br>el primer parametro que recibe esta funcion es para poder colocarle el titulo a la alerta en est caso es una imagen aunque podria ser texto 
+         <br>segundo parametro sirve para mostrar un texto informativo en la alerta 
+         <br>el ultimo parametro es un numero entero unico de cualquier alerta</p>
+
+
+
+                <pre class="prettyprint linenums">
+<ol class="linenums"><li class="L0"><span class="tag">&lt;!DOCTYPE html</span><span class="pln"><span class="tag">&gt;</span><li class="L1"><span class="tag">&lt;html</span><span class="pln"> </span><span class="atn">lang</span><span class="pun">=</span><span class="atv">"es"</span><span class="tag">&gt;</span><li class="L4"><span class="tag">&lt;head&gt;</span></li><li class="L4"><span class="tag">&lt;link </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"css/bootstrap.css"</span> <span class="atn">rel</span><span class="pun">=</span><span class="atv">"stylesheet"</span><span>/&gt;</span></li><li class="L4"><span class="tag">&lt;script</span> <span class="atn">src</span><span class="pun">=</span><span class="atv">"js/jquery.js"</span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></li><li class="L4"><span class="tag">&lt;script</span> <span class="atn">src</span><span class="pun">=</span><span class="atv">"js/JDao.js"</span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></li><li class="L4"><span class="tag">&lt;script&gt;</span> <li class="L4"><span class="pln">$(</span><span class="atn">'#btnerror'</span><span class="pln">).click(</span><span class="atn">function()</span><span class="pln">{</span></li><li class="L4"><span class="tag">JDao.alertas.error(
+        <span class="atn">'&lt;img src='img/alertaerror.png' width='500' &gt;",
+        "Aqui puedes poner lo que quieres que te aparesca de texto cuando alla ocurrido un determinado error",
+        2
+     </span>);</span></li><li class="L4"><span class="tag">&lt;/script&gt;</span></li><li class="L4"><span class="tag">&lt;/head&gt;</span></li><li class="L4"><span class="tag">&lt;body&gt;</span></li><li class="L1"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"botton"</span> <span class="atn">value</span><span class="pun">=</span><span class="atv">"Alerta tipo error"</span> <span class="atn">id</span><span class="pun">=</span><span class="atv">"btnerror"</span><span class="tag">&gt;</span><li class="L4"><span class="tag">&lt;/body&gt;</span></li><li class="L4"><span class="tag">&lt;/html&gt;</span></li></ol></pre>
+
+
+    
+                <input type="button" class="btn btn-primary" id="error" value="Probar Alerta Error"><br><br>
+
+
+
+                    <h3>ALERTA DE INFORMACION</h3>
+     <p>alerta de tipo informcacion para mostar un mensaje cuando alla courrido una determinada accion 
+         <br>el primer parametro que recibe esta funcion es para poder colocarle el titulo a la alerta en est caso es una imagen aunque podria ser texto 
+         <br>segundo parametro sirve para mostrar un texto informativo en la alerta 
+         <br>el ultimo parametro es un numero entero unico de cualquier alerta</p>
+
+
+
+                <pre class="prettyprint linenums">
+<ol class="linenums"><li class="L0"><span class="tag">&lt;!DOCTYPE html</span><span class="pln"><span class="tag">&gt;</span><li class="L1"><span class="tag">&lt;html</span><span class="pln"> </span><span class="atn">lang</span><span class="pun">=</span><span class="atv">"es"</span><span class="tag">&gt;</span><li class="L4"><span class="tag">&lt;head&gt;</span></li><li class="L4"><span class="tag">&lt;link </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"css/bootstrap.css"</span> <span class="atn">rel</span><span class="pun">=</span><span class="atv">"stylesheet"</span><span>/&gt;</span></li><li class="L4"><span class="tag">&lt;script</span> <span class="atn">src</span><span class="pun">=</span><span class="atv">"js/jquery.js"</span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></li><li class="L4"><span class="tag">&lt;script</span> <span class="atn">src</span><span class="pun">=</span><span class="atv">"js/JDao.js"</span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></li><li class="L4"><span class="tag">&lt;script&gt;</span> <li class="L4"><span class="pln">$(</span><span class="atn">'#btninfo'</span><span class="pln">).click(</span><span class="atn">function()</span><span class="pln">{</span></li><li class="L4"><span class="tag">JDao.alertas.info(
+        <span class="atn">'&lt;img src='img/alertainfo.png' width='500' &gt;",
+        "Aqui puedes poner lo que quieres que te aparesca de texto cuando alla ocurrido una determinada operacion,
+        2
+     </span>);</span></li><li class="L4"><span class="tag">&lt;/script&gt;</span></li><li class="L4"><span class="tag">&lt;/head&gt;</span></li><li class="L4"><span class="tag">&lt;body&gt;</span></li><li class="L1"><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"botton"</span> <span class="atn">value</span><span class="pun">=</span><span class="atv">"Alerta tipo Informacion"</span> <span class="atn">id</span><span class="pun">=</span><span class="atv">"btninfo"</span><span class="tag">&gt;</span><li class="L4"><span class="tag">&lt;/body&gt;</span></li><li class="L4"><span class="tag">&lt;/html&gt;</span></li></ol></pre>
+
+
+
+
+                <input type="button" class="btn btn-primary" id="informacion" value="Probar Alerta Informacion">
+            </div>
+        </div>
+    </body>
+</html>
