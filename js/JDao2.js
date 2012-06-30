@@ -1,213 +1,87 @@
-var JDao = new Object();
+var JDao;
 
+JDao = {
+    //aqui informacion general de la libreria
+    version: "2.0",
+    autor: "David Castro",
+    verInfo: function() {
+        alert("Libreria JDao " + JDao.version + " creada por " + JDao.autor);
+    },
+    //fucnion para  crear elementos dentro del documento
+    crearE: function(lugar, elemento) {
+
+        $(function() {
+            $(lugar).append(elemento)
+        })
+
+    },
+    click: function(elem, fun) {
+        var DomE = document.getElementById(elem)
+        DomE.onclick = fun;
+    }
+
+
+}
 //este es el objeto json para poder crear las alertas de la pagina
 JDao.alertas = {
 
-    //creacion de las alerta personalizadas
-    //esta es la alerta para cuando alla un error
-    //esta alerta recibe 3 parametro los cuales son:
-    //titulo:el cual recibe el titulo de la alerta lo cual puede ser texto o una imagen
-    //info:este parametro sirve para colocar el texto informativo para la alerta
-    //n:este parametro tiene que ser unico de cualquier otra alerta
-    error:function(titulo,info,n){
-       
-        var mensaje        mensaje="<div id='myModal"+n+"' class='modal' style='display:none'>";        mensaje=mensaje+"<div class='modal-header' style='background:#BE4036;'>"        mensaje=mensaje+"<a class='close' data-dismiss='modal' >&times;</a>";        mensaje=mensaje+"<center><h1 style='color:#FFF;'>"+titulo+"</h1></center>";        mensaje=mensaje+"</div><div class='modal-body'>";        mensaje=mensaje+"<h4>"+info+"</h4>";        mensaje=mensaje+"</div>";        mensaje=mensaje+'<div class="modal-footer">';        mensaje=mensaje+'<a style="text-decoration:none" href="#" data-dismiss="modal" class="btn btn-danger">Aceptar</a>';        mensaje=mensaje+'</div>'        mensaje=mensaje+'</div>';
-        $(function(){
-        $("body").append(mensaje);
-        $('#myModal'+n+'').modal('show');
+    alertGeneral: function(titulo, info, n, color,tipobtn) {
+        var mensaje
+        mensaje = "<div id='myModal" + n + "' class='modal' style='display:none'>";
+        mensaje = mensaje + "<div class='modal-header' style='background:" + color + ";'>"
+        mensaje = mensaje + "<a class='close' data-dismiss='modal' >&times;</a>";
+        mensaje = mensaje + "<center><h1 style='color:#FFF;'>" + titulo + "</h1></center>";
+        mensaje = mensaje + "</div><div class='modal-body'>";
+        mensaje = mensaje + "<h4>" + info + "</h4>";
+        mensaje = mensaje + "</div>";
+        mensaje = mensaje + '<div class="modal-footer">';
+        mensaje = mensaje + '<a style="text-decoration:none" href="#" data-dismiss="modal" class="btn btn-'+tipobtn+' ">Aceptar</a>';
+        mensaje = mensaje + '</div>'
+        mensaje = mensaje + '</div>';
+        $(function() {
+            $("body").append(mensaje);
+            $('#myModal' + n + '').modal('show');
         })
     },
 
+    error: function(titulo, info, n) {
 
-    info:function(titulo,info,n)
-    {
-        var mensaje        mensaje="<div id='myModal"+n+"' class='modal' style='display:none'>";        mensaje=mensaje+"<div class='modal-header' style='background:#4DB2D0;'>"        mensaje=mensaje+"<a class='close' data-dismiss='modal' >&times;</a>";        mensaje=mensaje+"<center><h1 style='color:#FFF;'>"+titulo+"</h1></center>";        mensaje=mensaje+"</div><div class='modal-body'>";        mensaje=mensaje+"<h4>"+info+"</h4>";        mensaje=mensaje+"</div>";        mensaje=mensaje+'<div class="modal-footer">';        mensaje=mensaje+'<a style="text-decoration:none" href="#" data-dismiss="modal" class="btn btn-info">Aceptar</a>';        mensaje=mensaje+'</div>'        mensaje=mensaje+'</div>';
-        $(function(){
-        $("body").append(mensaje);
-        $('#myModal'+n+'').modal('show');
-        })
+        JDao.alertas.alertGeneral(titulo, info, n, '#BE4036','danger');
+    },
+
+
+    info: function(titulo, info, n) {
+
+         JDao.alertas.alertGeneral(titulo, info, n, '#4DB2D0','info');
     }
 
 };
+
+var J = JDao;
+
 
 
 
 
 $(document).on("ready",function(){
 
-    $("#error").click(function(){
-
-        //========================================================ALERTA DE ERROR=====================================================================
-       //asi se manda a llamar la alerta que desar que aparesca en este caso es una alerta de tipo error
-       //el primer parametro que recibe esta funcion es para poder colocarle el titulo a la alerta en est caso es una imagen aunque podria ser texto
-       //segundo parametro sirve para mostrar un texto informativo en la alerta
-       //el ultimo parametro es un numero entero unico de cualquier alerta
-        JDao.alertas.error("<img src='img/alertaerror.png' width='500'>",
+    J.click("error", function() {
+        J.alertas.error("<img src='img/alertaerror.png' width='500'>",
         "Aqui puedes poner lo que quieres que te aparesca de texto cuando alla ocurrido un determinado error",
-        2);
-      //=============================================================================================================================================
-      
-      });
+        2)
+    });
 
-      $("#informacion").click(function(){
+ 
+    J.click("informacion",function() {
 
-        //========================================================ALERTA DE informacion=====================================================================
-       //asi se manda a llamar la alerta que desar que aparesca en este caso es una alerta de tipo informacion
-       //el primer parametro que recibe esta funcion es para poder colocarle el titulo a la alerta en est caso es una imagen aunque podria ser texto
-       //segundo parametro sirve para mostrar un texto informativo en la alerta
-       //el ultimo parametro es un numero entero unico de cualquier alerta
-        JDao.alertas.info(
+        J.alertas.info(
         "<img src='img/alertainfo.png' width='500'>",
         "Aqui puedes poner lo que quieres que te aparesca de texto cuando alla ocurrido una determinada accion",
-        3
-        );
-      //=============================================================================================================================================
-      
-      });
+        3);
 
-
+    });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================================================
- * bootstrap-modal.js v2.0.2
- * http://twitter.github.com/bootstrap/javascript.html#modals
- * =========================================================
- * Copyright 2012 Twitter, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================= */
 
 
 !function( $ ){
